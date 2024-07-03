@@ -22,7 +22,7 @@ class ProductCard extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           SizedBox(
-            height: 150.0,
+            height: 100.0,
             child: Image.network(
               product.imageurl,
               errorBuilder: (context, error, stackTrace) => Image.asset(

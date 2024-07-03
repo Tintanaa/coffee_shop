@@ -11,10 +11,10 @@ CategoryData category1 = CategoryData(
 
 CategoryData category2 = CategoryData(
   name: 'Кофе с маслом', 
-  products: [product5],);
+  products: [product5, product5, product5, product5],);
 
 CategoryData category3 = CategoryData(
   name: 'It is DUNK', 
-  products: [product11],);
+  products: [product11, product11, product11, product11],);
 
 var categories1 = [category, category1, category2, category3];
