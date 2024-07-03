@@ -101,7 +101,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   CategoryHeader(
                     category: category,
                   ),
-                  CategoryGridView(category: category)
+                  CategoryGridView(category: category),
                 ],
               );
             },
