@@ -4,21 +4,19 @@ class ProductData {
   final String imageurl;
   final String currency;
 
-  const ProductData(
-    {
-      required this.name,
-      required this.price,
-      required this.imageurl,
-      required this.currency,
-    }
-  )
+  const ProductData({
+    required this.name,
+    required this.price,
+    required this.imageurl,
+    required this.currency,
+  });
 
-  factory ProductData.fromJSON(Map<String, dynamic> json){
+  factory ProductData.fromJSON(Map<String, dynamic> json) {
     return ProductData(
-      name: json['name'].toString(),
+      name: json['name'] as String,
       price: double.parse(json['price'].toString()),
-      imageurl: json['imageurl'].toString(),
-      currency: json['currency'].toString(),
+      imageurl: json['imageurl'] as String,
+      currency: json['currency'] as String,
     );
   }
 }
