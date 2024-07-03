@@ -1,5 +1,5 @@
 import 'package:coffee_shop/src/features/menu/data/product_data.dart';
-import 'package:coffee_shop/src/features/menu/view/price_count_button.dart';
+import 'package:coffee_shop/src/features/menu/view/widgets/price_count_button.dart';
 import 'package:coffee_shop/src/theme/app_colors.dart';
 import 'package:coffee_shop/src/theme/image_sources.dart';
 import 'package:flutter/material.dart';

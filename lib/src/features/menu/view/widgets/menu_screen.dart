@@ -1,7 +1,7 @@
 import 'package:coffee_shop/src/features/menu/data/category_data.dart';
-import 'package:coffee_shop/src/features/menu/view/category_fragment.dart';
-import 'package:coffee_shop/src/features/menu/view/category_header.dart';
-import 'package:coffee_shop/src/features/menu/view/category_grid.dart';
+import 'package:coffee_shop/src/features/menu/view/widgets/category_fragment.dart';
+import 'package:coffee_shop/src/features/menu/view/widgets/category_header.dart';
+import 'package:coffee_shop/src/features/menu/view/widgets/category_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
