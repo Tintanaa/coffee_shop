@@ -9,16 +9,21 @@ class CategoryGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      crossAxisCount: 2,
-      childAspectRatio: 0.9,
-      crossAxisSpacing: 8,
-      mainAxisSpacing: 8,
-      children: category.products.map((product) {
-        return ProductCard(product: product);
-      }).toList(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisExtent: 190,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+      ),
+      itemCount: category.products.length,
+      itemBuilder: (context, index) {
+        return ProductCard(
+          product: category.products[index],
+        );
+      },
     );
   }
 }

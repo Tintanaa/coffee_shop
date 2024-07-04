@@ -8,7 +8,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 class MenuScreen extends StatefulWidget {
   final List<CategoryData> allCategories;
 
-  const MenuScreen({super.key, required this.allCategories});
+  const MenuScreen({Key? key, required this.allCategories}) : super(key: key);
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -26,21 +26,22 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
-
     categoryKeys = {
       for (var category in widget.allCategories) category.name: GlobalKey()
     ,};
 
-    itemListener.itemPositions.addListener(() {
-      final firstVisibleIndex = itemListener.itemPositions.value
-          .firstWhere((item) => item.itemLeadingEdge >= 0)
-          .index;
+    itemListener.itemPositions.addListener(_handleItemPositionChange);
+  }
 
-      if (firstVisibleIndex != current && !inProgress) {
-        setCurrent(firstVisibleIndex);
-        appBarScrollToCategory(firstVisibleIndex);
-      }
-    });
+  void _handleItemPositionChange() {
+    final firstVisibleIndex = itemListener.itemPositions.value
+        .firstWhere((item) => item.itemLeadingEdge >= 0)
+        .index;
+
+    if (firstVisibleIndex != current && !inProgress) {
+      setCurrent(firstVisibleIndex);
+      appBarScrollToCategory(firstVisibleIndex);
+    }
   }
 
   void setCurrent(int newCurrent) {
@@ -49,20 +50,23 @@ class _MenuScreenState extends State<MenuScreen> {
     });
   }
 
-  void menuScrollToCategory(int ind) async {
+  Future<void> menuScrollToCategory(int ind) async {
     inProgress = true;
     _menuController.scrollTo(
-        index: ind, duration: const Duration(milliseconds: 500),);
-    await Future<void>.delayed(const Duration(milliseconds: 500));
+      index: ind,
+      duration: const Duration(milliseconds: 400),
+    );
+    await Future<void>.delayed(const Duration(milliseconds: 400));
     inProgress = false;
   }
 
-  void appBarScrollToCategory(int ind) async {
+  void appBarScrollToCategory(int ind) {
     _appBarController.scrollTo(
-        curve: Curves.easeOut,
-        opacityAnimationWeights: [20, 20, 60],
-        index: ind,
-        duration: const Duration(milliseconds: 500),);
+      curve: Curves.easeInOut,
+      opacityAnimationWeights: [20, 20, 60],
+      index: ind,
+      duration: const Duration(milliseconds: 400),
+    );
   }
 
   @override
