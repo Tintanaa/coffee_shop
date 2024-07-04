@@ -10,19 +10,19 @@ ProductData product1 = const ProductData(
   name: 'Раф', 
   price: 209.99, 
   currency: 'руб', 
-  imageurl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Rafcoffe.jpg/274px-Rafcoffe.jpg',);
+  imageurl: 'https://franko.su/upload/iblock/c4a/hzhp3gk8bpqnhtbc5hbr9rjp7ldsksk0.png',);
 
 ProductData product2 = const ProductData(
   name: 'Мокачино',
   price: 3,
   currency: 'euro',
-  imageurl: 'https://coffeemachina.com/wp-content/uploads/2019/06/mokachino.jpg',);
+  imageurl: 'https://coffe-spb.ru/img/cms/mokko.gif',);
 
 ProductData product3 = const ProductData(
   name: 'Латте', 
   price: 230.99, 
   currency: 'руб', 
-  imageurl: 'https://coffeepedia.ru/wp-content/uploads/2013/01/coffee.jpg',);
+  imageurl: 'https://schumli.ru/image/cache/catalog/100/latte-800x800.jpeg',);
 
 ProductData product4 = const ProductData(
   name: 'Американо', 
@@ -40,35 +40,53 @@ ProductData product6 = const ProductData(
   name: 'Лунго',
   price: 90,
   currency: 'руб',
-  imageurl: 'https://nescafe.ru/sites/default/files/styles/topic_intro_large_webp/public/lungo.jpg.webp?itok=6jduJ4zC',);
+  imageurl: 'https://latte.ru/wa-data/public/shop/products/10/webp/data/public/site/img/rec_83.webp',);
 
 ProductData product7 = const ProductData(
   name: 'Ристретто',
   price: 110,
   currency: 'руб',
-  imageurl: "https://nescafe.ru/sites/default/files/styles/topic_intro_large_webp/public/ristretto.jpg.webp?itok=3mg3AQQh",);
+  imageurl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkoya1Ith2NY4h70KBqR7vbVPD8ofS7I3TKg&s",);
 
 ProductData product8 = const ProductData(
   name: 'Флэт уайт',
   price: 120,
   currency: 'руб',
-  imageurl: 'https://nescafe.ru/sites/default/files/styles/topic_intro_large_webp/public/flat-white.jpg.webp?itok=GoMlYmh4',);
+  imageurl: 'https://cdn.bellinigroup.ru/upload/202307/64be4f0d51504_400x400_fit.png.webp',);
 
 ProductData product9 = const ProductData(
   name: 'Аффогато',
   price: 150,
   currency: 'руб',
-  imageurl: 'https://storage.yandexcloud.net/moskvichmag/uploads/2022/07/shutterstock_417033919.jpg',);
+  imageurl: 'https://mixdrink.club/wp-content/uploads/2020/10/002-2-500x500.jpg',);
 
 ProductData product10 = const ProductData(
   name: 'Капуччино',
   price: 140,
   currency: 'руб',
-  imageurl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzazKBBL7OzCXJgZ2h0dAnRjo2VUl8tVHM-A&s',);
+  imageurl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXEJuR4VI4On0KrOdF8p_3v845GcAt8kCTA&s',);
 
 ProductData product11 = const ProductData(
   name: 'Dunkaccino',
   price: 5,
   currency: 'usd',
   imageurl: 'https://nypost.com/wp-content/uploads/sites/2/2023/03/NYPICHPDPICT000008362441.jpg?quality=75&strip=all&w=1024',);
+
+ProductData product12 = const ProductData(
+  name: 'Butter coffee',
+  price: 4,
+  currency: 'eu',
+  imageurl: 'https://eatbeautiful.net/wp-content/uploads/2021/10/cocoa-butter-bulletproof-coffee-FI1-500x500.jpg',);
+
+ProductData product13 = const ProductData(
+  name: 'Cafe de olla',
+  price: 4,
+  currency: 'eu',
+  imageurl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKAh_Vlse5DCnXhOvhUKPEoY1ptZOXEJn_bw&s',);
+
+ProductData product14 = const ProductData(
+  name: 'Cafe cubano',
+  price: 4,
+  currency: 'eu',
+  imageurl: 'https://www.cook2eatwell.com/wp-content/uploads/2021/04/cuban-coffee-image.jpg',);
 

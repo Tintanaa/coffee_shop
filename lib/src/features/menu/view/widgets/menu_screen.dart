@@ -1,5 +1,5 @@
 import 'package:coffee_shop/src/features/menu/data/category_data.dart';
-import 'package:coffee_shop/src/features/menu/view/widgets/category_fragment.dart';
+import 'package:coffee_shop/src/features/menu/view/widgets/category_chip.dart';
 import 'package:coffee_shop/src/features/menu/view/widgets/category_header.dart';
 import 'package:coffee_shop/src/features/menu/view/widgets/category_grid.dart';
 import 'package:flutter/material.dart';
@@ -8,55 +8,61 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 class MenuScreen extends StatefulWidget {
   final List<CategoryData> allCategories;
 
-  const MenuScreen({Key? key, required this.allCategories}) : super(key: key);
+  const MenuScreen({super.key, required this.allCategories});
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  late Map<String, GlobalKey> categoryKeys;
   final ItemScrollController _menuController = ItemScrollController();
   final ItemScrollController _appBarController = ItemScrollController();
-  final ItemPositionsListener _itemListener = ItemPositionsListener.create();
-  int _currentCategoryIndex = 0;
+  final ItemPositionsListener itemListener = ItemPositionsListener.create();
+  int current = 0;
+  bool inProgress = false;
+  bool scrolledToBottom = false;
 
   @override
   void initState() {
     super.initState();
-    _itemListener.itemPositions.addListener(_onItemPositionChange);
-  }
 
-  void _onItemPositionChange() {
-    final firstVisibleIndex = _itemListener.itemPositions.value
-        .firstWhere((item) => item.itemLeadingEdge >= 0)
-        .index;
+    categoryKeys = {
+      for (var category in widget.allCategories) category.name: GlobalKey()
+    ,};
 
-    if (firstVisibleIndex != _currentCategoryIndex) {
-      _setCurrentCategoryIndex(firstVisibleIndex);
-      _appBarScrollToCategory(firstVisibleIndex);
-    }
-  }
+    itemListener.itemPositions.addListener(() {
+      final firstVisibleIndex = itemListener.itemPositions.value
+          .firstWhere((item) => item.itemLeadingEdge >= 0)
+          .index;
 
-  void _setCurrentCategoryIndex(int newIndex) {
-    setState(() {
-      _currentCategoryIndex = newIndex;
+      if (firstVisibleIndex != current && !inProgress) {
+        setCurrent(firstVisibleIndex);
+        appBarScrollToCategory(firstVisibleIndex);
+      }
     });
   }
 
-  void _menuScrollToCategory(int index) {
-    _menuController.scrollTo(
-      index: index,
-      duration: const Duration(milliseconds: 400),
-    );
+  void setCurrent(int newCurrent) {
+    setState(() {
+      current = newCurrent;
+    });
   }
 
-  void _appBarScrollToCategory(int index) {
+  void menuScrollToCategory(int ind) async {
+    inProgress = true;
+    _menuController.scrollTo(
+        index: ind, duration: const Duration(milliseconds: 500),);
+    await Future<void>.delayed(const Duration(milliseconds: 500));
+    inProgress = false;
+  }
+
+  void appBarScrollToCategory(int ind) async {
     _appBarController.scrollTo(
-      index: index,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeOut,
-      opacityAnimationWeights: [20, 20, 60],
-    );
+        curve: Curves.easeOut,
+        opacityAnimationWeights: [20, 20, 60],
+        index: ind,
+        duration: const Duration(milliseconds: 500),);
   }
 
   @override
@@ -73,14 +79,17 @@ class _MenuScreenState extends State<MenuScreen> {
               itemCount: widget.allCategories.length,
               itemBuilder: (context, index) {
                 final category = widget.allCategories[index];
-                return CategoryChip(
+                return Padding( // Add padding here
+                  padding: const EdgeInsets.only(right: 8.0), // Gap between chips
+                  child: CategoryChip(
                   text: category.name,
-                  isSelected: index == _currentCategoryIndex,
+                  isSelected: index == current,
                   onSelected: () {
-                    _setCurrentCategoryIndex(index);
-                    _menuScrollToCategory(index);
-                    _appBarScrollToCategory(index);
+                    setCurrent(index);
+                    menuScrollToCategory(index);
+                    appBarScrollToCategory(index);
                   },
+                  ),
                 );
               },
             ),
@@ -90,7 +99,7 @@ class _MenuScreenState extends State<MenuScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ScrollablePositionedList.builder(
             itemScrollController: _menuController,
-            itemPositionsListener: _itemListener,
+            itemPositionsListener: itemListener,
             itemCount: widget.allCategories.length,
             itemBuilder: (context, index) {
               final category = widget.allCategories[index];
@@ -101,7 +110,9 @@ class _MenuScreenState extends State<MenuScreen> {
                   CategoryHeader(
                     category: category,
                   ),
-                  CategoryGridView(category: category),
+                  CategoryGridView(
+                      category: category,
+                  ),
                 ],
               );
             },

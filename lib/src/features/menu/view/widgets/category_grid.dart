@@ -13,7 +13,7 @@ class CategoryGridView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       crossAxisCount: 2,
-      childAspectRatio: 0.7,
+      childAspectRatio: 0.9,
       crossAxisSpacing: 8,
       mainAxisSpacing: 8,
       children: category.products.map((product) {

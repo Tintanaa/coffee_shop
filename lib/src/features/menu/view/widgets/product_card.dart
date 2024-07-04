@@ -13,23 +13,24 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(16.0),
       ),
       clipBehavior: Clip.antiAlias,
-      elevation: 5.0,
+      elevation: 10.0,
       color: AppColors.white,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           SizedBox(
-            height: 100.0,
+            height: 200.0,
+            width: double.infinity,
             child: Image.network(
               product.imageurl,
               errorBuilder: (context, error, stackTrace) => Image.asset(
                 ImageSources.placeholder,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
 
@@ -40,24 +41,26 @@ class ProductCard extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  AppColors.black.withOpacity(0.6),
+                  AppColors.blue.withOpacity(0.7),
                 ],
               ),
             ),
             padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 12.0,
+              horizontal: 32.0,
+              vertical: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  product.name,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium!
-                      .copyWith(color: AppColors.white),
+                Center(
+                  child: Text(
+                    product.name,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(color: AppColors.white),
+                  ),
                 ),
                 const SizedBox(height: 4.0),
                 PriceCartButton(

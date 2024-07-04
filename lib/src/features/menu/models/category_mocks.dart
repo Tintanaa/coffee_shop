@@ -2,7 +2,7 @@ import 'package:coffee_shop/src/features/menu/data/category_data.dart';
 import 'package:coffee_shop/src/features/menu/models/product_mocks.dart';
 
 CategoryData category = CategoryData(
-  name: 'Кофейные напитки на основе эспрессо', 
+  name: 'Кофейные напитки на основе эспрессо',
   products: [product, product4, product6, product7, product9],);
 
 CategoryData category1 = CategoryData(
@@ -10,8 +10,8 @@ CategoryData category1 = CategoryData(
   products: [product1, product2, product3, product8, product10],);
 
 CategoryData category2 = CategoryData(
-  name: 'Кофе с маслом', 
-  products: [product5, product5, product5, product5],);
+  name: 'Экзотика',
+  products: [product5, product12, product13, product14],);
 
 CategoryData category3 = CategoryData(
   name: 'It is DUNK', 

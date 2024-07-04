@@ -10,9 +10,12 @@ class CategoryHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Text(
-        category.name,
-        style: Theme.of(context).textTheme.titleLarge,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          category.name,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
     );
   }
